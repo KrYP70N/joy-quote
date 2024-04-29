@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import { collection } from "./connect-db.lib";
 
 export const getQuotes = async (limit: number = 10, page: number = 0) => {
@@ -28,5 +29,54 @@ export const postQuotes = async (data: any[]) => {
   } catch (err) {
     console.log(err)
     throw new Error('Error occur at writing quotes')
+  }
+}
+
+export const setFavourite = async (id: string, email: string) => {
+  const request = await collection('joy_quote', 'quotes')
+  const _id = new ObjectId(id)
+  try {
+    const query = {_id}
+    const item = await request.findOne(query)
+
+    if(item?.favourites) {
+      if(item.favourites.includes(email)) {
+        // remove fav item
+        const update = item.favourites.filter((e: string) => e !== email)
+        await request.updateOne(query, {$set: {
+          favourites: update
+        }})  
+      } else {
+        // add fav item 
+        const update = [...item.favourites, email] 
+        await request.updateOne(query, {$set: {
+          favourites: update
+        }})  
+      }
+    } else {
+      // create fav list and update
+      await request.updateOne(query, {$set: {
+        favourites: [email]
+      }})
+    }
+
+    return {
+      message: 'success'
+    }
+  } catch (error) {
+    throw new Error("An error occur at set favourite")
+  }
+}
+
+export const deleteQuote = async (id: string) => {
+  const request = await collection('joy_quote', 'quotes')
+  const _id = new ObjectId(id)
+  try {
+    await request.findOneAndDelete({_id})
+    return {
+      message: 'success'
+    } 
+  } catch (error) {
+    throw new Error("An error occur at delete quote")
   }
 }

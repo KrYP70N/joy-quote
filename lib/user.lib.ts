@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb"
 import { compareHash, hash } from "./bcrypt.lib"
 import { collection } from "./connect-db.lib"
 import { generateToken, verifyToken } from "./jwt.lib"
@@ -108,5 +107,21 @@ export const verifyUser = async (verifyToken: string) => {
     }
   } catch (error) {
     throw new Error("Error occur at resend verification")
+  }
+}
+
+export const validate = async (header: any) => {
+  const token = header.get('access-token')
+  const req = await collection('joy_quote', 'users')
+  try {
+    const find = await req.findOne({token})
+    const valid = verifyToken(token)
+    if(find && valid) {
+      return valid
+    } else {
+      return false
+    }
+  } catch (error) {
+    throw new Error("Error occur at validate token")
   }
 }

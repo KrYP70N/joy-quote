@@ -1,5 +1,7 @@
 // import { run } from "@/lib/data.lib"
-import { getQuotes, postQuotes } from "@/lib/quote.lib"
+import { deleteQuote, getQuotes, postQuotes } from "@/lib/quote.lib"
+import { validate } from "@/lib/user.lib"
+import { headers } from "next/headers"
 import { NextRequest, NextResponse } from "next/server"
 
 export const GET = async (req: NextRequest) => {
@@ -12,7 +14,31 @@ export const GET = async (req: NextRequest) => {
 
 export const POST = async (req: NextRequest) => {
   const data = await req.json()
-  const request = await postQuotes(data)
-  return NextResponse.json(request)
-  // const data = await postQuotes()
+  const valid = await validate(headers())
+
+  if(valid) {
+    const request = await postQuotes(data)
+    return NextResponse.json(request)
+  } else {
+    return NextResponse.json({
+      message: 'Invalid token'
+    }, {
+      status: 403
+    })
+  }
+}
+
+export const DELETE = async (req: NextRequest) => {
+  const {id} = await req.json()
+  const valid = await validate(headers())
+
+  if(valid) {
+    const request = await deleteQuote(id)
+  } else {
+    return NextResponse.json({
+      message: 'Invalid token'
+    }, {
+      status: 403
+    })
+  }
 }
