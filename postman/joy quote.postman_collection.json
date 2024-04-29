@@ -1,0 +1,291 @@
+{
+	"info": {
+		"_postman_id": "ec63cf8a-a64d-4d7f-9b3a-39aceff79cea",
+		"name": "joy quote",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9827281"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"krypn22@gmail.com\",\n    \"password\": \"Kyaw123##\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/api/user",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"krypn22@gmail.com\",\n    \"password\": \"Kyaw123##\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/api/user/register",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resend verification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"krypn22@gmail.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtyeXBuMjJAZ21haWwuY29tIiwicHN3IjoiJDJiJDEwJHR6ekxrMlkxZ3VSSWJyTDQ3L2p3U3Vpazh1UW5TZ21jWWpENGcwU3pkN1ZyaVZxUXZmOXFLIiwiaWF0IjoxNzE0Mzk0MDM2LCJleHAiOjE3MTY5ODYwMzZ9.TvrmZWAT5aX4ls_LyjYuUnTCT3P4YGp6jxfmase7k8Q\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/api/user/verify/resend",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"verify",
+								"resend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/api/user/verify?token=value",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"verify"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "value"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "quotes",
+			"item": [
+				{
+					"name": "fav",
+					"item": [
+						{
+							"name": "favourite",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "access-token",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"662f154261a67fca665002be\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base}}/api/quote/fav",
+									"host": [
+										"{{base}}"
+									],
+									"path": [
+										"api",
+										"quote",
+										"fav"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "get quotes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/api/quote?page=1&limit=10",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"quote"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post quote",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtyeXBuMjJAZ21haWwuY29tIiwicHN3IjoiJDJiJDEwJHR6ekxrMlkxZ3VSSWJyTDQ3L2p3U3Vpazh1UW5TZ21jWWpENGcwU3pkN1ZyaVZxUXZmOXFLIiwiaWF0IjoxNzE0Mzk0MDM2LCJleHAiOjE3MTY5ODYwMzZ9.TvrmZWAT5aX4ls_LyjYuUnTCT3P4YGp6jxfmase7k8Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"author\": \"Albert Einstein\",\n    \"quote\": \"Test Imagination is more important than knowledge.\",\n    \"date\": \"1929-02-05\"\n  }\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/api/quote",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"quote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/api/quote",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"quote"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base",
+			"value": "localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtyeXBuMjJAZ21haWwuY29tIiwicHN3IjoiJDJiJDEwJHR6ekxrMlkxZ3VSSWJyTDQ3L2p3U3Vpazh1UW5TZ21jWWpENGcwU3pkN1ZyaVZxUXZmOXFLIiwiaWF0IjoxNzE0Mzk0MDM2LCJleHAiOjE3MTY5ODYwMzZ9.TvrmZWAT5aX4ls_LyjYuUnTCT3P4YGp6jxfmase7k8Q",
+			"type": "string"
+		}
+	]
+}
