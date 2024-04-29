@@ -1,10 +1,25 @@
-import { mailTo } from "@/lib/mailer.lib";
+import { loginUser } from "@/lib/user.lib";
 import { NextRequest, NextResponse } from "next/server";
 
-export const POST = (req: NextRequest) => {
-  mailTo('hsulei2610@gmail.com', 'Testing', 'Bae Bae go ayam chit dl <3')
-  return NextResponse.json({
-    message: 'success'
-  })
+export const POST = async (req: NextRequest) => {
+  const {email, password} = await req.json()
+  console.log(email, password)
+  if(!email || !password) {
+    return NextResponse.json({
+      message: 'Invalid input'
+    }, {
+      status: 202
+    })
+  }
+
+  try {
+    const data = await loginUser(email, password)
+    return NextResponse.json(data)
+  } catch (error) {
+    console.log(error)
+    throw new Error("Error occur at login")
+  }
+
+  return NextResponse.json({email, password})
 }
 

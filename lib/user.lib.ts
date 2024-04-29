@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb"
-import { hash } from "./bcrypt.lib"
+import { compareHash, hash } from "./bcrypt.lib"
 import { collection } from "./connect-db.lib"
 import { generateToken, verifyToken } from "./jwt.lib"
 import { mailTo } from "./mailer.lib"
@@ -66,6 +66,32 @@ export const resendVerification = async (email: string, token: string) => {
 }
 
 export const loginUser = async (email: string, password: string) => {
+  const req = await collection('joy_quote', 'users')
+  const query = {email: email}
+  const invalid = {
+    message: 'Invalid user name or password!',
+    status: 202
+  }
+  try {
+    const data = await req.findOne(query)
+    if(!data) {
+      return invalid
+    }
+
+    const parseJWT: any = verifyToken(data.token)
+    const matchPsw = await compareHash(password, parseJWT.psw)
+
+    if(matchPsw) {
+      return {
+        token: data.token
+      }
+    } else {
+      return invalid
+    }
+    
+  } catch(error) {
+    throw new Error("An error occur at login user")
+  }
 }
 
 export const verifyUser = async (verifyToken: string) => {
@@ -84,4 +110,3 @@ export const verifyUser = async (verifyToken: string) => {
     throw new Error("Error occur at resend verification")
   }
 }
-
