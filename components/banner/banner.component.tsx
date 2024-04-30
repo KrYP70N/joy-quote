@@ -54,7 +54,7 @@ export default function Banner({height}: {height?: number}) {
     return (
       <section className="banner" style={{
         background: `url(${history[index - 1].url}) no-repeat center / cover, #333`,
-        height: (height || 300) + 'px'  
+        height: (height || 300) + 'px'
       }}>
         <div className="wrapper"></div>
 
