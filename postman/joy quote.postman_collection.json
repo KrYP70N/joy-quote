@@ -196,6 +196,11 @@
 								{
 									"key": "limit",
 									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "'a'",
+									"disabled": true
 								}
 							]
 						}
@@ -215,7 +220,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n  {\n    \"author\": \"Albert Einstein\",\n    \"quote\": \"Test Imagination is more important than knowledge.\",\n    \"date\": \"1929-02-05\"\n  }\n]\n",
+							"raw": "[\n  {\n    \"author\": \"John Lennon\",\n    \"quote\": \"Life is what happens when you're busy making other plans.\",\n    \"date\": \"1940-10-09\"\n  },\n  {\n    \"author\": \"Mark Twain\",\n    \"quote\": \"Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do.\",\n    \"date\": \"1835-11-30\"\n  },\n  {\n    \"author\": \"Oscar Wilde\",\n    \"quote\": \"To live is the rarest thing in the world. Most people exist, that is all.\",\n    \"date\": \"1854-10-16\"\n  },\n  {\n    \"author\": \"Helen Keller\",\n    \"quote\": \"The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.\",\n    \"date\": \"1880-06-27\"\n  },\n  {\n    \"author\": \"Mahatma Gandhi\",\n    \"quote\": \"The best way to find yourself is to lose yourself in the service of others.\",\n    \"date\": \"1869-10-02\"\n  },\n  {\n    \"author\": \"Martin Luther King Jr.\",\n    \"quote\": \"Darkness cannot drive out darkness; only light can do that. Hate cannot drive out hate; only love can do that.\",\n    \"date\": \"1929-01-15\"\n  },\n  {\n    \"author\": \"Walt Disney\",\n    \"quote\": \"All our dreams can come true, if we have the courage to pursue them.\",\n    \"date\": \"1901-12-05\"\n  },\n  {\n    \"author\": \"Mother Teresa\",\n    \"quote\": \"Spread love everywhere you go. Let no one ever come to you without leaving happier.\",\n    \"date\": \"1910-08-26\"\n  },\n  {\n    \"author\": \"Babe Ruth\",\n    \"quote\": \"Every strike brings me closer to the next home run.\",\n    \"date\": \"1895-02-06\"\n  },\n  {\n    \"author\": \"Coco Chanel\",\n    \"quote\": \"The most courageous act is still to think for yourself. Aloud.\",\n    \"date\": \"1883-08-19\"\n  },\n  {\n    \"author\": \"Winston Churchill\",\n    \"quote\": \"Success is not final, failure is not fatal: It is the courage to continue that counts.\",\n    \"date\": \"1874-11-30\"\n  },\n  {\n    \"author\": \"Vincent van Gogh\",\n    \"quote\": \"I would rather die of passion than of boredom.\",\n    \"date\": \"1853-03-30\"\n  },\n  {\n    \"author\": \"Ralph Waldo Emerson\",\n    \"quote\": \"Do not go where the path may lead, go instead where there is no path and leave a trail.\",\n    \"date\": \"1803-05-25\"\n  },\n  {\n    \"author\": \"Leo Tolstoy\",\n    \"quote\": \"If you want to be happy, be.\",\n    \"date\": \"1828-09-09\"\n  },\n  {\n    \"author\": \"Henry Ford\",\n    \"quote\": \"Whether you think you can, or you think you can't--you're right.\",\n    \"date\": \"1863-07-30\"\n  },\n  {\n    \"author\": \"Pablo Picasso\",\n    \"quote\": \"Everything you can imagine is real.\",\n    \"date\": \"1881-10-25\"\n  },\n  {\n    \"author\": \"Aristotle\",\n    \"quote\": \"It is during our darkest moments that we must focus to see the light.\",\n    \"date\": \"384-07-15\"\n  },\n  {\n    \"author\": \"Eleanor Roosevelt\",\n    \"quote\": \"The future belongs to those who believe in the beauty of their dreams.\",\n    \"date\": \"1884-10-11\"\n  },\n  {\n    \"author\": \"Albert Camus\",\n    \"quote\": \"In the depth of winter, I finally learned that within me there lay an invincible summer.\",\n    \"date\": \"1913-11-07\"\n  },\n  {\n    \"author\": \"J.K. Rowling\",\n    \"quote\": \"It is our choices that show what we truly are, far more than our abilities.\",\n    \"date\": \"1965-07-31\"\n  },\n  {\n    \"author\": \"Charles Darwin\",\n    \"quote\": \"It is not the strongest of the species that survive, nor the most intelligent, but the one most responsive to change.\",\n    \"date\": \"1809-02-12\"\n  },\n  {\n    \"author\": \"Rosa Parks\",\n    \"quote\": \"Each person must live their life as a model for others.\",\n    \"date\": \"1913-02-04\"\n  },\n  {\n    \"author\": \"Marilyn Monroe\",\n    \"quote\": \"Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.\",\n    \"date\": \"1926-06-01\"\n  },\n  {\n    \"author\": \"George Orwell\",\n    \"quote\": \"Freedom is the right to tell people what they do not want to hear.\",\n    \"date\": \"1903-06-25\"\n  },\n  {\n    \"author\": \"Harriet Tubman\",\n    \"quote\": \"Every great dream begins with a dreamer. Always remember, you have within you the strength, the patience, and the passion to reach for the stars to change the world.\",\n    \"date\": \"1822-03-10\"\n  },\n  {\n    \"author\": \"Harvey Milk\",\n    \"quote\": \"Hope will never be silent.\",\n    \"date\": \"1930-05-22\"\n  },\n  {\n    \"author\": \"Helen Keller\",\n    \"quote\": \"The only thing worse than being blind is having sight but no vision.\",\n    \"date\": \"1880-06-27\"\n  },\n  {\n    \"author\": \"J.R.R. Tolkien\",\n    \"quote\": \"All we have to decide is what to do with the time that is given us.\",\n    \"date\": \"1892-01-03\"\n  },\n  {\n    \"author\": \"Audrey Hepburn\",\n    \"quote\": \"Nothing is impossible, the word itself says 'I'm possible'!\",\n    \"date\": \"1929-05-04\"\n  },\n  {\n    \"author\": \"Bob Marley\",\n    \"quote\": \"The truth is, everyone is going to hurt you. You just got to find the ones worth suffering for.\",\n    \"date\": \"1945-02-06\"\n  },\n  {\n    \"author\": \"Dalai Lama\",\n    \"quote\": \"Happiness is not something ready made. It comes from your own actions.\",\n    \"date\": \"1935-07-06\"\n  },\n  {\n    \"author\": \"Kurt Vonnegut\",\n    \"quote\": \"We are what we pretend to be, so we must be careful about what we pretend to be.\",\n    \"date\": \"1922-11-11\"\n  },\n  {\n    \"author\": \"John F. Kennedy\",\n    \"quote\": \"Change is the law of life. And those who look only to the past or present are certain to miss the future.\",\n    \"date\": \"1917-05-29\"\n  },\n  {\n    \"author\": \"Malala Yousafzai\",\n    \"quote\": \"We realize the importance of our voices only when we are silenced.\",\n    \"date\": \"1997-07-12\"\n  },\n  {\n    \"author\": \"William Shakespeare\",\n    \"quote\": \"The fool doth think he is wise, but the wise man knows himself to be a fool.\",\n    \"date\": \"1564-04-23\"\n  },\n  {\n    \"author\": \"Anne Frank\",\n    \"quote\": \"How wonderful it is that nobody need wait a single moment before starting to improve the world.\",\n    \"date\": \"1929-06-12\"\n  },\n  {\n    \"author\": \"Bruce Lee\",\n    \"quote\": \"I fear not the man who has practiced 10,000 kicks once, but I fear the man who has practiced one kick 10,000 times.\",\n    \"date\": \"1940-11-27\"\n  },\n  {\n    \"author\": \"Marie Curie\",\n    \"quote\": \"Life is not easy for any of us. But what of that? We must have perseverance and above all confidence in ourselves. We must believe that we are gifted for something and that this thing must be attained.\",\n    \"date\": \"1867-11-07\"\n  },\n  {\n    \"author\": \"Frederick Douglass\",\n    \"quote\": \"If there is no struggle, there is no progress.\",\n    \"date\": \"1818-02-14\"\n  },\n  {\n    \"author\": \"Socrates\",\n    \"quote\": \"The only true wisdom is in knowing you know nothing.\",\n    \"date\": \"470-05-06\"\n  },\n  {\n    \"author\": \"Franklin D. Roosevelt\",\n    \"quote\": \"The only limit to our realization of tomorrow will be our doubts of today.\",\n    \"date\": \"1882-01-30\"\n  },\n  {\n    \"author\": \"Abraham Lincoln\",\n    \"quote\": \"I'm a success today because I had a friend who believed in me and I didn't have the heart to let him down.\",\n    \"date\": \"1809-02-12\"\n  },\n  {\n    \"author\": \"Benjamin Franklin\",\n    \"quote\": \"Tell me and I forget. Teach me and I remember. Involve me and I learn.\",\n    \"date\": \"1706-01-17\"\n  },\n  {\n    \"author\": \"Stephen Hawking\",\n    \"quote\": \"Remember to look up at the stars and not down at your feet. Try to make sense of what you see and wonder about what makes the universe exist.\",\n    \"date\": \"1942-01-08\"\n  },\n  {\n    \"author\": \"Emily Dickinson\",\n    \"quote\": \"Forever is composed of nows.\",\n    \"date\": \"1830-12-10\"\n  },\n  {\n    \"author\": \"Vincent van Gogh\",\n    \"quote\": \"I feel that there is nothing more truly artistic than to love people.\",\n    \"date\": \"1853-03-30\"\n  },\n  {\n    \"author\": \"Leonardo da Vinci\",\n    \"quote\": \"Simplicity is the ultimate sophistication.\",\n    \"date\": \"1452-04-15\"\n  },\n  {\n    \"author\": \"Frida Kahlo\",\n    \"quote\": \"Feet, what do I need you for when I have wings to fly?\",\n    \"date\": \"1907-07-06\"\n  },\n  {\n    \"author\": \"Albert Camus\",\n    \"quote\": \"Don't walk in front of me… I may not follow. Don't walk behind me… I may not lead. Walk beside me… just be my friend.\",\n    \"date\": \"1913-11-07\"\n  },\n  {\n    \"author\": \"Rumi\",\n    \"quote\": \"You were born with wings, why prefer to crawl through life?\",\n    \"date\": \"1207-09-30\"\n  },\n  {\n    \"author\": \"Ernest Hemingway\",\n    \"quote\": \"The most painful thing is losing yourself in the process of loving someone too much, and forgetting that you are special too.\",\n    \"date\": \"1899-07-21\"\n  },\n  {\n    \"author\": \"Jimi Hendrix\",\n    \"quote\": \"When the power of love overcomes the love of power the world will know peace.\",\n    \"date\": \"1942-11-27\"\n  },\n  {\n    \"author\": \"Virginia Woolf\",\n    \"quote\": \"Lock up your libraries if you like; but there is no gate, no lock, no bolt that you can set upon the freedom of my mind.\",\n    \"date\": \"1882-01-25\"\n  }\n]\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -236,10 +241,25 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "delete quote",
 					"request": {
-						"method": "PATCH",
-						"header": [],
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "access-token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"662fd13061a67fca6650035a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{base}}/api/quote",
 							"host": [
@@ -248,6 +268,67 @@
 							"path": [
 								"api",
 								"quote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "random quote",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/api/quote/random",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"quote",
+								"random"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/api/quote/author",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"quote",
+								"author"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "mis",
+			"item": [
+				{
+					"name": "banner",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/api/banner",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"banner"
 							]
 						}
 					},
