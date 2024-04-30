@@ -8,8 +8,18 @@ export const GET = async (req: NextRequest) => {
   const param = req.nextUrl.searchParams
   const limit = Number(param.get('limit'))
   const page = Number(param.get('page')) - 1
-  const data = await getQuotes(limit, page || 0, param.get('search')?.toString())
-  return NextResponse.json(data)
+  try {
+    const data = await getQuotes(limit, page || 0, param.get('search')?.toString())
+    return NextResponse.json(data)
+  } catch (error) {
+    return NextResponse.json({
+      data: [],
+      page: 0,
+      pages: 0,
+      count: 0
+    })
+  }
+  
 }
 
 export const POST = async (req: NextRequest) => {

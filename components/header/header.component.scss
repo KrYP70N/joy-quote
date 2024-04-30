@@ -13,6 +13,9 @@ header {
   nav {
     display: flex;
   }
+  .secondary ul {
+    align-items: center;
+  }
   .mb-none {
     @media screen and (max-width: 1024px) {
       display: none;

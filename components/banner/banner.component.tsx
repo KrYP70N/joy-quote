@@ -59,8 +59,8 @@ export default function Banner({height}: {height?: number}) {
         <div className="wrapper"></div>
 
         <div className="banner-content">
-          <p className={`${roboto.className} font-light text-xl quote`}>{history[index - 1].quote}</p>
-          <p className={`${roboto.className} font-bold text-xl author`}><span>{history[index - 1].author}</span> | {history[index - 1].date}</p>
+          <p className={`${roboto.className} font-light quote`}>{history[index - 1].quote}</p>
+          <p className={`${roboto.className} font-bold author`}><span>{history[index - 1].author}</span> | {history[index - 1].date}</p>
         </div>
 
         <ul className={`indicator ${roboto.className} font-light text-2xl`}>

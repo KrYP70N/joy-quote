@@ -51,13 +51,28 @@
     bottom: 32px;
     left: 32px;
     color: #fff;
+    @media screen and (max-width: 992px) {
+      width: 70vw;
+      max-height: 80%;
+    }
     .quote {
       line-height: 32px;
       margin-bottom: 16px;
+      font-size: 22px;
+      @media screen and (max-width: 992px) {
+        font-size: 18px;
+      }
+      @media screen and (max-width: 767px) {
+        font-size: 14px;
+      }
     }
     .author {
       span {
         color: #18d08c;
+        font-size: 22px;
+        @media screen and (max-width: 992px) {
+          font-size: 18px;
+        }
       }
     }
   }

@@ -7,6 +7,7 @@ import { FaBook, FaBookBible, FaHeart, FaRegistered, FaUser } from "react-icons/
 import { IoIosMenu } from "react-icons/io";
 import { useState } from 'react';
 import { FaHistory, FaPenAlt } from 'react-icons/fa'
+import { SearchBar } from '../search-bar/searchBar.component'
 
 
 export default function Header() {
@@ -37,6 +38,9 @@ export default function Header() {
       <nav className="secondary mb-none">
         <ul className="flex align-middle text-light text-sm font-medium">
           <li className="mr-7">
+            <SearchBar />
+          </li>
+          <li className="mr-7">
             <NavLink path="/favourite" name='Favourite' icon={<FaHeart />} />
           </li>
           <li className="mr-7">
@@ -49,11 +53,14 @@ export default function Header() {
       </nav>
 
       <nav className="mb-flex mb-nav">
-        <h1 className="mr-10">
+        <h1>
           <Link href="/" className="text-light text-lg font-medium">Joy Quote</Link>
         </h1>
-        <div className="accordion" onClick={toggleDrawer}>
-          <IoIosMenu />
+        <div className='flex'>
+          <SearchBar />
+          <div className="accordion ml-5" onClick={toggleDrawer}>
+            <IoIosMenu />
+          </div>
         </div>
       </nav>
       <div className={`drawer mb-flex ${drawer && "active"}`}>
