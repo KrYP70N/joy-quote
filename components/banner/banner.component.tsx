@@ -29,8 +29,8 @@ export default function Banner() {
   }
 
   const loadQuote = () => {
-    bannerQuoteService().then((quote: any) => {
-      bannerService().then((url) => {
+    bannerQuoteService(Math.random()).then((quote: any) => {
+      bannerService(Math.random()).then((url) => {
         setHistory([
           ...history,
           {
