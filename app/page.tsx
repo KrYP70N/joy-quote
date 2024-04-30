@@ -1,17 +1,51 @@
-import Container from "@/components/container.component";
-import Footer from "@/components/footer.component";
-import Header from "@/components/header.component";
+'use client'
+import Banner from "@/components/banner/banner.component";
+import Container from "@/components/container/container.component";
+import List from "@/components/list/list.component";
+import { listService } from "@/services/list.service";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [pageInfo, setPageInfo] = useState<{active?: number, total?: number}>({})
+  const [data, setData] = useState<any>([])
+  const renderList = () => {
+    listService((pageInfo.active || 0) + 1, 10).then((res) => {
+      setData([...data, ...res.data])
+
+      setPageInfo({
+        active: res.page, total: res.pages
+      })
+    })
+  }
+
+  useEffect(() => {
+    renderList()
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+      const isNearEnd = scrollHeight - scrollTop - clientHeight < 100;
+
+      if (isNearEnd && pageInfo.active !== pageInfo.total) {
+        renderList()
+        window.removeEventListener('scroll', handleScroll);
+      }
+
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [pageInfo])
+
   return (
     <>
-      <Header />
-      
-      <Container attr="p-0">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ex, eaque in exercitationem laudantium sed ipsa repudiandae hic atque reprehenderit voluptas quis quos aspernatur, sunt assumenda soluta eligendi reiciendis modi?
+      <Banner />
+      <Container>
+        <List data={data} />
       </Container>
-
-      <Footer />
     </>
   )
 }

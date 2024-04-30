@@ -1,5 +1,4 @@
-import { roboto } from "@/ui/fonts";
-import Container from "./container.component";
+import Container from "../container/container.component";
 
 export default function Footer() {
   return (

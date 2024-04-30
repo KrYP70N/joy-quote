@@ -26,6 +26,12 @@ const config: Config = {
         extrabold: '800',
         black: '900',
       },
+      width: {
+        "calc-100-32": "calc(100% - 32px)"
+      },
+      inset: {
+        'custom-left': '16px', // Add your custom left value here
+      },
     },
   },
   plugins: [],

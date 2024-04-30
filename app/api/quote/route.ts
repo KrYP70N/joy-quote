@@ -8,13 +8,22 @@ export const GET = async (req: NextRequest) => {
   const param = req.nextUrl.searchParams
   const limit = Number(param.get('limit'))
   const page = Number(param.get('page')) - 1
-  const data = await getQuotes(limit, page || 0)
+  const data = await getQuotes(limit, page || 0, param.get('search')?.toString())
   return NextResponse.json(data)
 }
 
 export const POST = async (req: NextRequest) => {
-  const data = await req.json()
-  const valid = await validate(headers())
+  let data = await req.json()
+  const valid: any = await validate(headers())
+
+  data = data.map((item: any) => {
+    return {
+      ...item,
+      email: valid.email,
+      favourites: [],
+      comments: []
+    }
+  })
 
   if(valid) {
     const request = await postQuotes(data)
@@ -34,6 +43,7 @@ export const DELETE = async (req: NextRequest) => {
 
   if(valid) {
     const request = await deleteQuote(id)
+    return NextResponse.json(request)
   } else {
     return NextResponse.json({
       message: 'Invalid token'

@@ -1,0 +1,12 @@
+header {
+  padding: 16px;
+  position: fixed;
+  width: calc(100% - 32px);
+  left: 16px;
+  top: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}

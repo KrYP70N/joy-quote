@@ -7,7 +7,7 @@ export const collection = async (db_name: string, collection_name: string) => {
     await client.connect()
     const db = client.db(db_name)
     const collection = db.collection(collection_name)
-    return collection
+    return {collection, client}
   } catch (err) {
     console.log(err)
     throw new Error('error occur at connecting to DB')

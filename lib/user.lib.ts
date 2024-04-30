@@ -6,7 +6,7 @@ import { mailTo } from "./mailer.lib"
 export const checkUser = async (email: string) => {
   const req = await collection('joy_quote', 'users')
   try {
-    const user = await req.findOne({email})
+    const user = await req.collection.findOne({email})
     if(user) {
       return true
     } else {
@@ -15,6 +15,8 @@ export const checkUser = async (email: string) => {
   } catch (err) {
     console.log(err)
     throw new Error("Error occur at search user")
+  } finally {
+    await req.client.close()
   }
 }
 
@@ -29,16 +31,19 @@ export const registerUser = async (email: string, password: string) => {
         verifyToken: generateToken({email, psw, type: 'verify'}, '5m'),
         verify: false
       }
-      await req.insertOne(data)
+      await req.collection.insertOne(data)
       await mailTo(email, 'Verify your account', `
         http://localhost:3000/api/user/verify?token=${data.verifyToken}
       `)
+
       return {
         message: 'success'
       }
     } catch (error) {
       console.log(error)
       throw new Error("Error occur at create user")
+    } finally {
+      await req.client.close()
     }
 }
 
@@ -48,8 +53,7 @@ export const resendVerification = async (email: string, token: string) => {
   const query = {email: email, token}
   const update = { $set: { verifyToken} }
   try {
-    const data = await req.updateOne(query, update)
-    console.log(data, 'data')
+    const data = await req.collection.updateOne(query, update)
     if(data.modifiedCount === 0) {
       throw new Error("Invalid input at resend verification")
     }
@@ -61,6 +65,8 @@ export const resendVerification = async (email: string, token: string) => {
     }
   } catch (error) {
     throw new Error("Error occur at resend verification")
+  } finally {
+    await req.client.close()
   }
 }
 
@@ -72,14 +78,14 @@ export const loginUser = async (email: string, password: string) => {
     status: 202
   }
   try {
-    const data = await req.findOne(query)
+    const data = await req.collection.findOne(query)
     if(!data) {
+
       return invalid
     }
 
     const parseJWT: any = verifyToken(data.token)
     const matchPsw = await compareHash(password, parseJWT.psw)
-
     if(matchPsw) {
       return {
         token: data.token
@@ -90,6 +96,8 @@ export const loginUser = async (email: string, password: string) => {
     
   } catch(error) {
     throw new Error("An error occur at login user")
+  } finally {
+    await req.client.close()
   }
 }
 
@@ -98,8 +106,9 @@ export const verifyUser = async (verifyToken: string) => {
   const query = {verifyToken}
   const update = {$set: {verify: true}}
   try {
-    const data = await req.updateOne(query, update)
+    const data = await req.collection.updateOne(query, update)
     if(data.modifiedCount === 0) {
+
       throw new Error("Invalid input at resend verification")
     }
     return {
@@ -107,6 +116,8 @@ export const verifyUser = async (verifyToken: string) => {
     }
   } catch (error) {
     throw new Error("Error occur at resend verification")
+  } finally {
+    await req.client.close()
   }
 }
 
@@ -114,7 +125,7 @@ export const validate = async (header: any) => {
   const token = header.get('access-token')
   const req = await collection('joy_quote', 'users')
   try {
-    const find = await req.findOne({token})
+    const find = await req.collection.findOne({token})
     const valid = verifyToken(token)
     if(find && valid) {
       return valid
@@ -123,5 +134,7 @@ export const validate = async (header: any) => {
     }
   } catch (error) {
     throw new Error("Error occur at validate token")
+  } finally {
+    await req.client.close()
   }
 }
