@@ -1,7 +1,7 @@
 import { getBanner } from "@/lib/banner.lib";
 import { NextResponse } from "next/server";
 
-export const GET = async () => {
+export const POST = async () => {
   try {
     const url = await getBanner()
     return NextResponse.json({

@@ -9,7 +9,7 @@ import { FaHeart } from "react-icons/fa6";
 import { isLogin } from "@/services/storage.service"
 
 
-export default function Banner() {
+export default function Banner({height}: {height?: number}) {
   const [login] = useState(isLogin())
   const [history, setHistory] = useState<any[]>([])
   const [index, setIndex] = useState<number>(0)
@@ -49,7 +49,10 @@ export default function Banner() {
 
   if(history.length > 0) {
     return (
-      <section className="banner" style={{background: `url(${history[index - 1].url}) no-repeat center / cover, #333`}}>
+      <section className="banner" style={{
+        background: `url(${history[index - 1].url}) no-repeat center / cover, #333`,
+        height: (height || 300) + 'px'  
+      }}>
         <div className="wrapper"></div>
 
         <div className="banner-content">

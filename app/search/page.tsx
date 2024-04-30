@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <>
-      <Banner height={400}/>
+      <Banner />
       <Container>
         <h2 className={`${roboto.className} text-xl mb-8`}>Quotes Around The Feed</h2>
         <List data={data} />
