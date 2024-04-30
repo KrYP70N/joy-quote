@@ -1,29 +1,30 @@
 'use client'
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Banner from "@/components/banner/banner.component";
 import Container from "@/components/container/container.component";
 import List from "@/components/list/list.component";
 import { listService } from "@/services/list.service";
 import { roboto } from "@/ui/fonts";
-import { useSearchParams } from "next/navigation";
-import { Suspense, useEffect, useState } from "react";
 
 export default function Home() {
-  const kw = useSearchParams().get('kw') as string
-  const [pageInfo, setPageInfo] = useState<{active?: number, total?: number, count?: number}>({})
-  const [data, setData] = useState<any>([])
+  const [pageInfo, setPageInfo] = useState<{active?: number, total?: number, count?: number}>({});
+  const [data, setData] = useState<any>([]);
+  const kw = useSearchParams().get('kw') as string;
+
   const renderList = () => {
     listService((pageInfo.active || 0) + 1, 10, kw).then((res) => {
-      setData([...data, ...res.data])
+      setData([...data, ...res.data]);
 
       setPageInfo({
         active: res.page, total: res.pages, count: res.count
-      })
-    })
-  }
+      });
+    });
+  };
 
   useEffect(() => {
-    renderList()
-  }, [])
+    renderList();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,7 +32,7 @@ export default function Home() {
       const isNearEnd = scrollHeight - scrollTop - clientHeight < 100;
 
       if (isNearEnd && pageInfo.active !== pageInfo.total) {
-        renderList()
+        renderList();
         window.removeEventListener('scroll', handleScroll);
       }
 
@@ -41,7 +42,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [pageInfo])
+  }, [pageInfo]);
 
   return (
     <Suspense fallback={<div>loading ...</div>}>
@@ -51,5 +52,5 @@ export default function Home() {
         <List data={data} />
       </Container>
     </Suspense>
-  )
+  );
 }
