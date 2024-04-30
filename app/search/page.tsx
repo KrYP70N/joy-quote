@@ -5,7 +5,7 @@ import List from "@/components/list/list.component";
 import { listService } from "@/services/list.service";
 import { roboto } from "@/ui/fonts";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 
 export default function Home() {
   const kw = useSearchParams().get('kw') as string
@@ -44,12 +44,12 @@ export default function Home() {
   }, [pageInfo])
 
   return (
-    <>
+    <Suspense fallback={<div>loading ...</div>}>
       <Banner />
       <Container>
         <h2 className={`${roboto.className} text-xl mb-8`}>Found : {pageInfo.count || 0} related with <span className="bg-primary px-2 text-light rounded-lg">{kw}</span></h2>
         <List data={data} />
       </Container>
-    </>
+    </Suspense>
   )
 }
