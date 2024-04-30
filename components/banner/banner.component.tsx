@@ -10,6 +10,7 @@ import { isLogin } from "@/services/storage.service"
 
 
 export default function Banner({height}: {height?: number}) {
+  const [isLoading, setLoading] = useState(false)
   const [login] = useState(isLogin())
   const [history, setHistory] = useState<any[]>([])
   const [index, setIndex] = useState<number>(0)
@@ -29,6 +30,7 @@ export default function Banner({height}: {height?: number}) {
   }
 
   const loadQuote = () => {
+    setLoading(true)
     bannerQuoteService(Math.random()).then((quote: any) => {
       bannerService(Math.random()).then((url) => {
         setHistory([
@@ -38,6 +40,7 @@ export default function Banner({height}: {height?: number}) {
             url
           }
         ])
+        setLoading(false)
         setIndex(index + 1)
       })
     })
@@ -71,6 +74,10 @@ export default function Banner({height}: {height?: number}) {
             <GrLinkPrevious />
           </li>
         </ul>
+
+        <div className={`loading ${isLoading && 'active'}`}>
+          <div className="spanner"></div>
+        </div>
       </section>
     )
   }
