@@ -51,7 +51,7 @@ export const setFavourite = async (id: string, email: string) => {
       if(item.favourites.includes(email)) {
         // remove fav item
         const update = item.favourites.filter((e: string) => e !== email)
-        await request.updateOne(query, {$set: {
+        await request.collection.updateOne(query, {$set: {
           favourites: update
         }})  
       } else {
