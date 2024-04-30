@@ -3,6 +3,7 @@ import Banner from "@/components/banner/banner.component";
 import Container from "@/components/container/container.component";
 import List from "@/components/list/list.component";
 import { listService } from "@/services/list.service";
+import { roboto } from "@/ui/fonts";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -44,6 +45,7 @@ export default function Home() {
     <>
       <Banner />
       <Container>
+        <h2 className={`${roboto.className} text-xl mb-8`}>Quotes Around The Feed</h2>
         <List data={data} />
       </Container>
     </>

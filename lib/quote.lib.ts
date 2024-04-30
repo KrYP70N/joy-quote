@@ -57,7 +57,7 @@ export const setFavourite = async (id: string, email: string) => {
       } else {
         // add fav item 
         const update = [...item.favourites, email] 
-        await request.updateOne(query, {$set: {
+        await request.collection.updateOne(query, {$set: {
           favourites: update
         }})  
       }
@@ -104,4 +104,16 @@ export const randomQuote = async () => {
   } finally {
     await request.client.close()
   }
+}
+
+export const getAuthor = async () => {
+  const req = await collection('joy_quote', 'quotes')
+  try {
+    const data = await req.collection.distinct('author')
+    req.client.close()
+    return data
+  } catch (err) {
+    console.log(err)
+    throw new Error('Error occur at reading quotes')
+  }  
 }
