@@ -58,7 +58,7 @@ export const resendVerification = async (email: string, token: string) => {
       throw new Error("Invalid input at resend verification")
     }
     await mailTo(email, 'Verify your account', `
-        http://localhost:3000/api/user/verify?token=${verifyToken}
+        https://joy-quote.vercel.app//api/user/verify?token=${verifyToken}
       `)
     return {
       message: 'success'
